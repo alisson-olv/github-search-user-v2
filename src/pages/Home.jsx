@@ -17,7 +17,7 @@ const Home = () => {
 
     setUser(inputValue);
     setInputValue('');
-    navigate('/teste');
+    navigate('/profile');
   }
 
   return (
