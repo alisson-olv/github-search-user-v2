@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/404" element={<NotFound />} />
+          <Route path="/teste" element={<NotFound />} />
         </Routes>
       </UserContext>
     </BrowserRouter>
