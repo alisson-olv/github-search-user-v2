@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <UserContext>
         <Routes>
-          <Route path="/github-search-user-v2" element={<Home />} />
+          <Route path="/<github-search-user-v2>" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </UserContext>
