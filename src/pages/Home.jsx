@@ -1,21 +1,17 @@
 import { BsSearch } from 'react-icons/bs';
 import React, { useContext, useState } from 'react';
 import { UserProfileContext } from '../context/UserContext';
-import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
-  const navigate = useNavigate();
-
   const [inputValue, setInputValue] = useState('');
 
-  const { setUser } = useContext(UserProfileContext);
+  const { setUser, isPending, error } = useContext(UserProfileContext);
 
   const handleSubmitUser = (e) => {
     e.preventDefault();
 
     setUser(inputValue);
     setInputValue('');
-    navigate('/profile');
   }
 
   return (
@@ -43,6 +39,16 @@ const Home = () => {
             <BsSearch /> Buscar
           </button>
         </div>
+        {error &&
+          <p className='text-lg italic font-thin text-center mt-3'>
+            {error}
+          </p>
+        }
+        {isPending &&
+          <p className='text-lg italic font-thin text-center mt-3'>
+            Carregando
+          </p>
+        }
       </form>
     </div>
   )

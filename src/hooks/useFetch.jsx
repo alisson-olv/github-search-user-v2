@@ -7,26 +7,43 @@ export const useFetch = (user) => {
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
 
+  // refatorar fetch e colocar pra validar usuário
+
   const navigate = useNavigate();
 
   useEffect(() => {
 
     if (user !== null) {
       const fetchData = async () => {
-        const response = await fetch(`https://api.github.com/users/${user}`);
-        const json = await response.json();
-        setData(json);
+        setIsPending(true);
+
+        try {
+          const response = await fetch(`https://api.github.com/users/${user}`);
+          const responseRepos = await fetch(`https://api.github.com/users/${user}/repos`);
+
+          if (response.status === 200) {
+            const json = await response.json();
+            const jsonRepos = await responseRepos.json();
+
+            setData(json);
+            setUserRepos(jsonRepos);
+            setError(null);
+
+            navigate('/profile');
+
+          } else {
+            setError('Ocorreu um erro ao buscar os dados do usuário');
+
+          }
+        } catch {
+          setError('Ocorreu um erro ao buscar os dados do usuário');
+
+        } finally {
+          setIsPending(false);
+        }
       };
 
       fetchData();
-
-      const fetchRepos = async () => {
-        const response = await fetch(`https://api.github.com/users/${user}/repos`);
-        const json = await response.json();
-        setUserRepos(json);
-      };
-
-      fetchRepos();
 
     } else {
       navigate('/');
@@ -34,5 +51,5 @@ export const useFetch = (user) => {
 
   }, [user]);
 
-  return { data, userRepos };
+  return { data, userRepos, isPending, error };
 };
