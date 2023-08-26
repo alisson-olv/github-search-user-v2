@@ -10,8 +10,6 @@ const Home = () => {
 
   const { setUser } = useContext(UserProfileContext);
 
-  // ajustar de voltar pra home, quero q tenha loading e erro
-
   const handleSubmitUser = (e) => {
     e.preventDefault();
 
