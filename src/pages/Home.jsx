@@ -19,7 +19,7 @@ const Home = () => {
   }
 
   return (
-    <div className='w-1/4 h-screen grid items-center m-auto'>
+    <div className='sm:w-3/4 md:w-2/4 lg:w-2/4 xl:w-1/4 h-screen grid items-center m-auto px-10'>
       <form onSubmit={handleSubmitUser}>
         <label htmlFor="default-input" className="block text-center mb-2 text-3xl font-light text-gray-900 dark:text-white">
           Search Devs

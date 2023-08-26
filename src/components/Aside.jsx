@@ -13,7 +13,7 @@ const Aside = () => {
   return (
     <>
       {data &&
-        <div className='bg-[#3b4252] w-1/4 min-h-screen px-5 py-10 flex flex-col gap-5' >
+        <div className='bg-[#3b4252] w-full sm:w-full lg:w-1/4 min-h-0 lg:min-h-screen px-5 py-10 flex flex-col gap-5' >
           <div className='flex justify-center'>
             <img
               className='rounded-lg w-5/6'
